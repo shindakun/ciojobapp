@@ -16,11 +16,12 @@ csv().fromFile(csvFilePath)
   })
   .on('end_parsed', (jsonArrObj) => {
 
-    // could be moved out to it's own function but for this excercise we should be ok.
-    // make sure we parsed the correct number of records.
+    // could be moved out to it's own function but for this excercise we should
+    // be ok. lets start by making sure we parsed the correct number of records.
     if (numRecords === jsonArrObj.length) {
 
-      // for each entry in the object create entry in new object, start count at 1.
+      // for each reason description in the loaded object create an entry in the
+      // new reasons object, start count at 1.
       for (let i in jsonArrObj) {
          if (reasons[jsonArrObj[i].reason] == null) {
           reasons[jsonArrObj[i].reason] = 1;
@@ -33,13 +34,14 @@ csv().fromFile(csvFilePath)
         }
       }
 
-      // just a quick check to see if our total record number matches the expected 10000 rows.
+      // just a quick check to see if our total record number matches the
+      // expected 10000 rows.
       let spotCheck = 0;
       for (let i in reasons) {
         spotCheck += reasons[i];
       }
       if (spotCheck != numRecords) {
-        console.error(`Spot check failed! Somethings not right there are only ${spotCheck} records.`);
+        console.error(`Spot check failed, there are only ${spotCheck} records.`);
       }
 
       // build our descending list of text reasons
@@ -50,6 +52,6 @@ csv().fromFile(csvFilePath)
         console.log(`${reasons[out[i]]}: ${out[i]}`);
       }
     } else {
-      console.error('Something went wrong.');
+      console.error(`Something went wrong there are only ${jsonArrObj.length} records`);
     }
   });
