@@ -1,14 +1,21 @@
 {
   "name": "ciojobapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple nodejs app writen to solve a job application challenge.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "start": "node index.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "csvtojson": "^1.1.7"
+  "csvtojson": "^1.1.7"
+  },
+  "repository": {
+  "url": "https://github.com/shindakun/ciojobapp"
+  },
+  "engines": {
+  "node": "8.1.x"
   }
 }

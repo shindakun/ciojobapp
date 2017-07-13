@@ -7,7 +7,7 @@ const numRecords = 10000;
 // const technically works here but use let since we're changing the contents.
 let reasons = {};
 
-// conver csv to json to make it a bit easier to work with.
+// convert csv to json to make it a bit easier to work with.
 csv().fromFile(csvFilePath)
   .on('done', (error) => {
     if (error) {
@@ -19,7 +19,7 @@ csv().fromFile(csvFilePath)
     // could be moved out to it's own function but for this excercise we should be ok.
     // make sure we parsed the correct number of records.
     if (numRecords === jsonArrObj.length) {
-  
+
       // for each entry in the object create entry in new object, start count at 1.
       for (let i in jsonArrObj) {
          if (reasons[jsonArrObj[i].reason] == null) {
@@ -32,7 +32,7 @@ csv().fromFile(csvFilePath)
           }
         }
       }
-      
+
       // just a quick check to see if our total record number matches the expected 10000 rows.
       let spotCheck = 0;
       for (let i in reasons) {
@@ -41,7 +41,7 @@ csv().fromFile(csvFilePath)
       if (spotCheck != numRecords) {
         console.error(`Spot check failed! Somethings not right there are only ${spotCheck} records.`);
       }
-    
+
       // build our descending list of text reasons
       let out = Object.keys(reasons).sort((a, b) => reasons[b] - reasons[a]);
 
